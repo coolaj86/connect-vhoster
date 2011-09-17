@@ -26,6 +26,7 @@
       apps.push({
           serverPath: serverPath
         , hostname: hostname
+        , server: server
       });
     }
 
@@ -65,15 +66,16 @@
 
   apps.sort(sortByHostnameLength);
   apps.forEach(function (app) {
-      
+      var server;
+
       try {
-        server = require(app.serverPath);
+        server = require(app.server);
       } catch(e) {
-        console.error('ERROR: [', app.hostname, '] failed to load [', '.' + app.serverPath.substr(__dirname.length), ']');
+        console.error('ERROR: [', app.hostname, '] failed to load [', '.' + app.server.substr(__dirname.length), ']', e);
         return;
       }
 
-    console.log('app.hostname:', app.hostname);
+    console.log('Loaded', app.hostname);
     servers.push(connect.vhost('*.' + app.hostname, app.server));
     servers.push(connect.vhost(app.hostname, app.server));
   });
