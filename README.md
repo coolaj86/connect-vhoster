@@ -6,8 +6,12 @@ Installation
     ln -s /var/webapps ~/webapps
     cd ~/webapps
     npm install
+
+Upstart in Ubuntu
+---
+
     vim webapps.conf
-    # change path to wherever you choose
+    # change path from `/var/webapps` to wherever you choose
     sudo cp webapps.conf /etc/init/
 
 Usage
