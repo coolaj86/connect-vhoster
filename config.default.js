@@ -3,6 +3,6 @@
 
   module.exports = {
       port: 80
-    , env: "development"
+    , env: "production"
   };
 }());
