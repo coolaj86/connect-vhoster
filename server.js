@@ -76,8 +76,8 @@
       }
 
     console.log('Loaded', app.hostname);
-    servers.push(connect.vhost('*.' + app.hostname, app.server));
-    servers.push(connect.vhost(app.hostname, app.server));
+    servers.push(connect.vhost('*.' + app.hostname, server));
+    servers.push(connect.vhost(app.hostname, server));
   });
 
   module.exports = connect.createServer.apply(connect, servers);
