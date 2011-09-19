@@ -11,7 +11,8 @@
     "node": ">= 0.4.0"
   },
   "dependencies": {
-      "connect": ">= 1.0.0"
+      "connect": "~ 1.0.0"
+    , "nowww": "~ 1.0.0"
   },
   "devDependencies": {}
 }

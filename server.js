@@ -2,10 +2,11 @@
   "use strict";
 
   var connect = require('connect')
+    , nowww = require('nowww')
     , fs = require('fs')
     , path = require('path')
     , apps = []
-    , servers = []
+    , servers = [nowww()]
     , dirs = fs.readdirSync(__dirname + "/vhosts")
     ;
 
