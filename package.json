@@ -2,7 +2,7 @@
   "author": "AJ ONeal <coolaj86@gmail.com> (http://coolaj86.info)",
   "name": "connect-vhoster",
   "description": "Throw your Node.JS apps in /var/webapps/vhosts and let 'er rip!",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/coolaj86/connect-vhoster.git"
@@ -11,8 +11,9 @@
     "node": ">= 0.4.0"
   },
   "dependencies": {
-      "connect": "~ 1.0.0"
-    , "nowww": "~ 1.1.0"
+      "connect": "~v1.0.0"
+    , "nowww": "~v1.1.0"
+    , "github-hook": "~v1.0.0"
   },
   "devDependencies": {}
 }

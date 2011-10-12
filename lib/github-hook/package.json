@@ -1,0 +1,16 @@
+{
+  "author": "AJ ONeal <coolaj86@gmail.com> (http://coolaj86.info)",
+  "name": "github-hook",
+  "description": "A quick tie-in for Github's Post-Receive Hooks",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/coolaj86/connect-vhoster.git"
+  },
+  "main": "index",
+  "engines": {
+    "node": ">=v0.4.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -2,7 +2,9 @@
   "use strict";
 
   module.exports = {
-      port: 80
-    , env: "production"
+      port: 4080
+    , env: "development"
+    , user: "www-data"
+    , githubAuth: "username:password"
   };
 }());

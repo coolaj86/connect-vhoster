@@ -2,11 +2,13 @@
   "use strict";
 
   var connect = require('connect')
+    , config = require('./config')
+    , githubHook = require('github-hook')
     , nowww = require('nowww')
     , fs = require('fs')
     , path = require('path')
     , apps = []
-    , servers = [nowww()]
+    , servers = [githubHook(config.githookAuth), nowww()]
     , dirs = fs.readdirSync(__dirname + "/vhosts")
     ;
 
