@@ -133,13 +133,13 @@ If `~/webapps/vhosts/example.com/aliases.js` exists and exports an array of host
 API, Options, and Special Files
 ===
 
-**`config.js`** - `~/webapps/config.js` - **user**, **githubAuth**, **port**
+**config.js** - `~/webapps/config.js` - **user**, **githubAuth**, **port**
 
   * `user` - the user that all applications should run as.
   * `githubAuth` - HTTP Basic Auth to be used by github.
   * `yeswww` - disables [`nowww`](https://github.com/coolaj86/jason/tree/master/connect-nowww) redirection.
 
-**`githook.sh`** - `~/webapps/githook.sh` - runs whenever `/github-hook` is requested with the correct `user:password`
+**githook.sh** - `~/webapps/githook.sh` - runs whenever `/github-hook` is requested with the correct `user:password`
 
 By default, these commands will be run:
 
@@ -148,13 +148,13 @@ By default, these commands will be run:
     git submodule update
     npm install
 
-**`vhosts`** - `~/webapps/vhosts` - where you should place your applications
+**vhosts** - `~/webapps/vhosts` - where you should place your applications
 
-**`foobar3000.com`** - `~/webapps/vhosts/foobar3000.com` - the primary (production) vhost for your application. `foobar3000.com` is an arbitrary example.
+**foobar3000.com** - `~/webapps/vhosts/foobar3000.com` - the primary (production) vhost for your application. `foobar3000.com` is an arbitrary example.
 
-**per-vhost `aliases.js`** - `~/webapps/vhosts/foobar3000.com/aliases.js` - any domain names exported here will be exported in addition to the name of the parent folder.
+**per-vhost aliases.js** - `~/webapps/vhosts/foobar3000.com/aliases.js` - any domain names exported here will be exported in addition to the name of the parent folder.
   
-**per-vhost `githook.sh`** - `~/webapps/vhosts/foobar3000.com/githook.sh` - include any commands here that should be run **instead of** the primary **`~/webapps/githook.sh`**.
+**per-vhost githook.sh** - `~/webapps/vhosts/foobar3000.com/githook.sh` - include any commands here that should be run **instead of** the primary **~/webapps/githook.sh**.
 
   
 Warning
