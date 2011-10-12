@@ -37,11 +37,17 @@ Copy the `config.defaults.js` and season to taste (read on for more options).
     cd ~/webapps/vhosts/foobar3000.com/
     npm install
 
+Note: Any applications with parse errors or that otherwise fail to load are skipped at load time.
+
 **Set aliases**
 
-Edit `/etc/hosts` and set `foobar3000.local` to 
+The folder name of each vhost app should be the primary (production) domain name.
+
+For development boxes and local setups you can have additional aliases in `aliases.js`:
 
     vim ~/webapps/vhosts/foobar3000.com/aliases.js
+
+Should look something like:
     (function () {
       "use strict";
 
@@ -51,6 +57,12 @@ Edit `/etc/hosts` and set `foobar3000.local` to
         , "helloworld3000.local"
       ];
     }());
+
+For local testing you can edit `/etc/hosts` and add things like
+
+  * `127.0.0.1    foobar3000.local` - for local testing
+
+Note: `www` prefixes are automatically removed and redirected.
 
 Note: vhosts are handled intelligently and with forgiveness (see below for an example).
 
