@@ -72,7 +72,7 @@
   }
 
   if (!config.yeswww) {
-    servers.push(nowww);
+    servers.push(nowww());
   }
 
   dirs.forEach(eachHost);
