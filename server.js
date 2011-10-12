@@ -8,7 +8,7 @@
     , fs = require('fs')
     , path = require('path')
     , apps = []
-    , servers = [githubHook(config.githookAuth), nowww()]
+    , servers = []
     , dirs = fs.readdirSync(__dirname + "/vhosts")
     ;
 
@@ -63,6 +63,16 @@
     hostnames.push(hostname)
 
     hostnames.forEach(eachHostname);
+  }
+
+
+
+  if (config.githookAuth) {
+    servers.push(githubHook(config.githookAuth));
+  }
+
+  if (!config.yeswww) {
+    servers.push(nowww);
   }
 
   dirs.forEach(eachHost);
