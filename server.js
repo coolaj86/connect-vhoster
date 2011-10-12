@@ -1,8 +1,8 @@
 (function () {
   "use strict";
 
-  var connect = require('connect')
-    , config = require('./config')
+  var config = require('./config')
+    , connect = require('connect')
     , githubHook = require('github-hook')
     , nowww = require('nowww')
     , fs = require('fs')
@@ -68,7 +68,7 @@
 
 
   if (config.githookAuth) {
-    servers.push(githubHook(config.githookAuth));
+    servers.push(githubHook(config.githookAuth, __dirname + '/githook.sh'));
   }
 
   if (!config.yeswww) {
