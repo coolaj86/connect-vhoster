@@ -33,6 +33,11 @@
       });
     }
 
+    if (/^\./.exec(hostname)) {
+      console.log('ignoring', hostname);
+      return;
+    }
+
     try {
       if (!fs.statSync(serverPath).isDirectory()) {
         throw new Error('IGNORED not a directory');
@@ -54,6 +59,11 @@
     }
 
     server = server || app;
+
+    if (!server) {
+      console.warn('[WARN] "' + serverPath + '" doesn\'t have a working server, but maybe that\'s okay.');
+      return;
+    }
 
     try {
       hostnames = require(aliases);

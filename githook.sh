@@ -8,14 +8,18 @@ GIT="/usr/bin/git"
 NPM="/usr/local/bin/npm"
 RET=0
 
+echo "## vhosts ##"
 [ -f "${VHOST_DIR}/${HOOK_SCRIPT}" ] && ${VHOST_DIR}/${HOOK_SCRIPT}
+echo ""
 
 for HOST in $VHOSTS
 do
   SERVICE="${VHOST_DIR}/${HOST}"
+  echo ""
+  echo "## ${SERVICE} ##"
   if [ -f "${SERVICE}/${HOOK_SCRIPT}" ]; then
     cd ${SERVICE} && ./${HOOK_SCRIPT}
-  else
+  elif [ -d "${SERVICE}/.git" ]; then
     cd ${SERVICE}
     ${GIT} fetch
     ${GIT} checkout master
