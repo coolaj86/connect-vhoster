@@ -3,10 +3,12 @@
 VHOST_DIR="/var/webapps/vhosts"
 LS="/bin/ls"
 VHOSTS=$(${LS} ${VHOST_DIR})
-HOOK_SCRIPT="github-hook.sh"
+HOOK_SCRIPT="githook.sh"
 GIT="/usr/bin/git"
 NPM="/usr/local/bin/npm"
 RET=0
+
+[ -f "${VHOST_DIR}/${HOOK_SCRIPT}" ] && ${VHOST_DIR}/${HOOK_SCRIPT}
 
 for HOST in $VHOSTS
 do
@@ -18,8 +20,8 @@ do
     ${GIT} fetch
     ${GIT} checkout master
     ${GIT} pull
-    ${GIT} git submodule init
-    ${GIT} git submodule update
+    ${GIT} submodule init
+    ${GIT} submodule update
     ${NPM} install
   fi
   unset SERVICE

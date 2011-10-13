@@ -157,6 +157,8 @@ By default, these commands will be run:
 
 **per-vhost aliases.js** - `~/webapps/vhosts/foobar3000.com/aliases.js` - any domain names exported here will be exported in addition to the name of the parent folder.
   
+**vhost submodule githook.sh** - `~/webapps/vhosts/githook.sh` - include any commands here that should be run **before (in addition to)** the primary **~/webapps/githook.sh** - this is particularly useful when your vhosts directory is a repository with multiple submodule applications.
+
 **per-vhost githook.sh** - `~/webapps/vhosts/foobar3000.com/githook.sh` - include any commands here that should be run **instead of** the primary **~/webapps/githook.sh**.
 
   
