@@ -75,6 +75,9 @@ Note: vhosts are handled intelligently and with forgiveness (see below for an ex
 GitHub Post-Recieve URLs
 ---
 
+  * <http://help.github.com/post-receive-hooks/>
+  * <http://developer.github.com/v3/repos/hooks/>
+
 For your development boxes you can have your applications reload on each commit. Amazing!
 
   0. Set `config.js:githubAuth` to a nice long password that will only be used by github
