@@ -16,7 +16,9 @@ do
   else
     cd ${SERVICE}
     ${GIT} fetch
+    ${GIT} checkout master
     ${GIT} pull
+    ${GIT} git submodule init
     ${GIT} git submodule update
     ${NPM} install
   fi
