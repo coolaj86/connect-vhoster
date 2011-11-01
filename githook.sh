@@ -1,6 +1,8 @@
 #!/bin/bash
-
-VHOST_DIR="/var/webapps/vhosts"
+# THISDIR will refer to the path to this script
+# see http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
+THISDIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+VHOST_DIR="${THISDIR}/vhosts"
 LS="/bin/ls"
 VHOSTS=$(${LS} ${VHOST_DIR})
 HOOK_SCRIPT="githook.sh"
@@ -22,7 +24,12 @@ do
   elif [ -d "${SERVICE}/.git" ]; then
     cd ${SERVICE}
     ${GIT} fetch
-    ${GIT} checkout master
+    if [ -f "BRANCH" ]; then
+      BRANCH=`cat BRANCH`
+    else
+      BRANCH="master"
+    fi
+    ${GIT} checkout ${BRANCH} 2>&1 2>/dev/null || true
     ${GIT} pull
     ${GIT} submodule init
     ${GIT} submodule update

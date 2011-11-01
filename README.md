@@ -161,6 +161,10 @@ By default, these commands will be run:
 
 **per-vhost githook.sh** - `~/webapps/vhosts/foobar3000.com/githook.sh` - include any commands here that should be run **instead of** the primary **~/webapps/githook.sh**.
 
+Notes
+===
+
+  * `mime` is listed as a top-level dependency of vhoster to allow you to extend `connect`s mimetypes
   
 Warning
 ===
