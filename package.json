@@ -11,10 +11,10 @@
     "node": ">= 0.4.0"
   },
   "dependencies": {
-      "connect": "~v1.0.0"
-    , "nowww": "~v1.1.0"
-    , "github-hook": "~v1.0.0"
-    , "mime": "~v1.2"
+      "connect": "~v1"
+    , "nowww": "~v1"
+    , "github-hook": "~v1"
+    , "mime": "~v1"
   },
   "devDependencies": {}
 }
