@@ -34,6 +34,9 @@ do
     ${GIT} submodule init
     ${GIT} submodule update
     ${NPM} install
+    if [ -f "${SERVICE}/${HOOK_SCRIPT}" ]; then
+      cd ${SERVICE} && ./${HOOK_SCRIPT}
+    fi
   fi
   unset SERVICE
 done
