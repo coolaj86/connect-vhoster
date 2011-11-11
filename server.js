@@ -77,8 +77,9 @@
 
 
 
-  if (config.githookAuth) {
-    servers.push(githubHook(config.githookAuth, __dirname + '/githook.sh'));
+  if (config.githookAuth || config.githubAuth) {
+    console.log('loaded with githookAuth');
+    servers.push(githubHook(config.githookAuth || config.githubAuth, __dirname + '/githook.sh'));
   }
 
   if (!config.yeswww) {

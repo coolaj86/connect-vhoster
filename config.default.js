@@ -6,6 +6,6 @@
     , env: "development"
     , user: "www-data"
     //  http://user:pass@anything.server.net/github-hook
-    , githubAuth: "username:password"
+    , githookAuth: "username:password"
   };
 }());
