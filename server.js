@@ -15,7 +15,7 @@
       , apps = []
       , servers = []
       , server
-      , app
+      , connectApp
       ;
 
     dirs  = fs.readdirSync(dirname);
@@ -108,6 +108,8 @@
 
     dirs.forEach(eachHost);
 
+    connectApp = connect();
+
     apps.sort(sortByHostnameLength);
     apps.forEach(function (app) {
         var server;
@@ -119,18 +121,13 @@
           return;
         }
 
-      servers.push(connect.vhost('*.' + app.hostname, server));
-      console.info('Loading', '*.' + app.hostname);
-      servers.push(connect.vhost(app.hostname, server));
-      console.info('Loading', app.hostname);
+      connectApp.use(connect.vhost('*.' + app.hostname, server));
+      console.info('Loaded', '*.' + app.hostname);
+      connectApp.use(connect.vhost(app.hostname, server));
+      console.info('Loaded', app.hostname);
     });
 
-    app = connect();
-    servers.forEach(function (server) {
-      app.use(server);
-    });
-
-    return app;
+    return connectApp;
   }
 
   module.exports.create = create;
