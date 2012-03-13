@@ -11,7 +11,7 @@
     "node": ">= 0.4.0"
   },
   "dependencies": {
-      "connect": "2.x"
+      "connect": ">= 1.8"
     , "nowww": "1.x"
     , "github-hook": "1.x"
     , "mime": "1.x"
