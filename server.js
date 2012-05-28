@@ -1,3 +1,4 @@
+/*jshint strict:true node:true es5:true onevar:true laxcomma:true laxbreak:true*/
 (function () {
   "use strict";
 
@@ -33,9 +34,9 @@
 
     function eachHost(hostname) {
       var serverPath = path.join(dirname, hostname)
-        , aliases = serverPath + '/aliases.js'
-        , server = serverPath + '/server.js'
-        , app = serverPath + '/app.js'
+        , aliases = serverPath + '/aliases'
+        , server = serverPath + '/server'
+        , app = serverPath + '/app'
         , hostnames
         , stats
         ;
@@ -56,7 +57,7 @@
       }
 
       if (!/\./.exec(hostname)) {
-        hostname += (config.defaultDomain)
+        hostname += (config.defaultDomain);
       }
 
       try {
@@ -91,7 +92,7 @@
       } catch(e) {
         hostnames = [];
       }
-      hostnames.push(hostname)
+      hostnames.push(hostname);
 
       hostnames.forEach(eachHostname);
     }
@@ -142,15 +143,13 @@
       console.info('Listening on ' + server.address().address + ':' + server.address().port);
     }
 
-    if (port) {
-      server = app.listen(port, listening);
-    } else {
-      server = app.listen(listening);
-    }
+    server = app.listen(port, listening);
   }
 
   if (require.main === module) {
     console.info("\n=== connect-vhoster running in stand-alone mode ===\n");
     run();
   }
+
+  module.exports = create(__dirname + '/vhosts');
 }());
