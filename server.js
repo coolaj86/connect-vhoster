@@ -65,16 +65,16 @@
           throw new Error('IGNORED not a directory');
         }
       } catch(e) {
-        server += '.js';
         return;
       }
 
+      // TODO: also try-catch require(serverPath) to allow for package.json majik
       try {
-        stats = fs.statSync(server);
+        stats = require(server);
       } catch(e) {
         server = undefined;
         try {
-          stats = fs.statSync(app);
+          stats = require(app);
         } catch(e) {
           app = undefined;
         }
