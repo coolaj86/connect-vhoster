@@ -70,17 +70,21 @@
       }
 
       try {
-        stats = fs.statSync(server);
+        require(server);
+        server = server;
       } catch(e) {
-        server = undefined;
         try {
-          stats = fs.statSync(app);
+          require(app);
+          server = app;
         } catch(e) {
-          app = undefined;
+          try {
+            require(serverPath);
+            server = serverPath;
+          } catch(e) {
+            server = undefined;
+          }
         }
       }
-
-      server = server || app;
 
       if (!server) {
         console.warn('[WARN] "' + serverPath + '" doesn\'t have a working server, but maybe that\'s okay.');
