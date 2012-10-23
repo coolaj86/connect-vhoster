@@ -65,7 +65,6 @@
           throw new Error('IGNORED not a directory');
         }
       } catch(e) {
-        server += '.js';
         return;
       }
 
