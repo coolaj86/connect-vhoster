@@ -100,19 +100,18 @@
       hostnames.forEach(eachHostname);
     }
 
+    connectApp = connect();
 
     if (config.githookAuth || config.githubAuth) {
       console.info('loaded with githookAuth');
-      servers.push(githubHook(config.githookAuth || config.githubAuth, dirname + '/githook.sh'));
+      connectApp.use(githubHook(config.githookAuth || config.githubAuth, dirname + '/githook.sh'));
     }
 
     if (!config.yeswww) {
-      servers.push(nowww());
+      connectApp.use(nowww());
     }
 
     dirs.forEach(eachHost);
-
-    connectApp = connect();
 
     apps.sort(sortByHostnameLength);
     apps.forEach(function (app) {
