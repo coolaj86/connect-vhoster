@@ -14,7 +14,6 @@
     var dirs
         // ignored when this module isn't main
       , apps = []
-      , servers = []
       , server
       , connectApp
       ;
