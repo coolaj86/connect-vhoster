@@ -65,22 +65,25 @@
           throw new Error('IGNORED not a directory');
         }
       } catch(e) {
-        server += '.js';
         return;
       }
 
       try {
-        stats = fs.statSync(server);
+        require(server);
+        server = server;
       } catch(e) {
-        server = undefined;
         try {
-          stats = fs.statSync(app);
+          require(app);
+          server = app;
         } catch(e) {
-          app = undefined;
+          try {
+            require(serverPath);
+            server = serverPath;
+          } catch(e) {
+            server = undefined;
+          }
         }
       }
-
-      server = server || app;
 
       if (!server) {
         console.warn('[WARN] "' + serverPath + '" doesn\'t have a working server, but maybe that\'s okay.');
@@ -97,19 +100,18 @@
       hostnames.forEach(eachHostname);
     }
 
+    connectApp = connect();
 
     if (config.githookAuth || config.githubAuth) {
       console.info('loaded with githookAuth');
-      servers.push(githubHook(config.githookAuth || config.githubAuth, dirname + '/githook.sh'));
+      connectApp.use(githubHook(config.githookAuth || config.githubAuth, dirname + '/githook.sh'));
     }
 
     if (!config.yeswww) {
-      servers.push(nowww());
+      connectApp.use(nowww());
     }
 
     dirs.forEach(eachHost);
-
-    connectApp = connect();
 
     apps.sort(sortByHostnameLength);
     apps.forEach(function (app) {
