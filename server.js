@@ -4,13 +4,13 @@
 
   var config = require('./config')
     , connect = require('connect')
-    , githubHook = require('github-hook')
+    , githubHook = require('./lib/github-hook')
     , nowww = require('nowww')
     , fs = require('fs')
     , path = require('path')
     ;
 
-  function create(dirname) {
+  function create(webappsDir, dirname) {
     var dirs
         // ignored when this module isn't main
       , apps = []
@@ -18,6 +18,7 @@
       , connectApp
       ;
 
+    console.log(webappsDir, dirname);
     dirs  = fs.readdirSync(dirname);
 
     if (!config.defaultDomain) {
@@ -103,7 +104,7 @@
 
     if (config.githookAuth || config.githubAuth) {
       console.info('loaded with githookAuth');
-      connectApp.use(githubHook(config.githookAuth || config.githubAuth, dirname + '/githook.sh'));
+      connectApp.use(githubHook(config.githookAuth || config.githubAuth, webappsDir + '/githook.sh'));
     }
 
     if (!config.yeswww) {
@@ -135,7 +136,7 @@
   module.exports.create = create;
 
   function run() {
-    var app = create(__dirname + '/vhosts')
+    var app = create(__dirname, __dirname + '/vhosts')
       , port = process.argv[2] || config.port || 4080
       , server
       ;
@@ -152,5 +153,5 @@
     run();
   }
 
-  module.exports = create(__dirname + '/vhosts');
+  module.exports = create(__dirname, __dirname + '/vhosts');
 }());
